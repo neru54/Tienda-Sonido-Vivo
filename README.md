@@ -21,3 +21,5 @@ npm run build      # build de producción
 ```
 
 Cuentas de demostración: `maria.perez@gmail.com` / `admin123` (administradora), `camila.rojas@gmail.com` / `cli123` (cliente).
+
+https://neru54.github.io/Tienda-Sonido-Vivo/
