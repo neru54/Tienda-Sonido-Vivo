@@ -1,0 +1,66 @@
+# Publica la Etapa 2 (React) en GitHub Pages: https://neru54.github.io/Tienda-Sonido-Vivo/
+# Se ejecuta en cada push a main o a mano desde la pestaña Actions.
+name: Publicar en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Una sola publicación a la vez; si llega otro push, se espera a que termine la actual
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+defaults:
+  run:
+    working-directory: fase2/proyecto_Etapa2_REACT
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: fase2/proyecto_Etapa2_REACT/package-lock.json
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Pruebas
+        run: npm test
+
+      - name: Build para la subcarpeta del repositorio
+        run: npm run build
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}/
+
+      # GitHub Pages no conoce las rutas de React Router: al recargar /productos
+      # devuelve 404.html, que es la misma app y muestra la página correcta.
+      - name: Copia 404.html para las rutas internas
+        run: cp dist/index.html dist/404.html
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: fase2/proyecto_Etapa2_REACT/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

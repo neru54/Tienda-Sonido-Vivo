@@ -4,6 +4,8 @@ import { defineConfig } from 'vitest/config'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  // Ruta base: '/' en local; en GitHub Pages el workflow define BASE_PATH=/Tienda-Sonido-Vivo/
+  base: process.env.BASE_PATH || '/',
   test: {
     environment: 'jsdom',
     globals: true,

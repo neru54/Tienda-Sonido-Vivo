@@ -59,7 +59,7 @@ export default function Navbar({ usuario, cantidadCarrito = 0, onCerrarSesion })
     <nav className="navbar navbar-expand-lg navbar-dark sv-navbar sticky-top">
       <div className="container">
         <Link className="navbar-brand sv-logo py-0" to="/">
-          <img src="/img/logo-sonido-vivo.png" alt="Sonido Vivo" width="162" height="40" />
+          <img src={`${import.meta.env.BASE_URL}img/logo-sonido-vivo.png`} alt="Sonido Vivo" width="162" height="40" />
         </Link>
 
         {/* Acciones fijas: siempre visibles, fuera del menú colapsable */}
