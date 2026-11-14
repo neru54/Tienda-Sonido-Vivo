@@ -8,5 +8,3 @@ La versión que se entrega, con **microservicios** (usuarios, catálogo y pedido
 - [APIs e Integración](../backend-microservicios/docs/APIs_e_Integracion.md)
 - [Manual de Usuario](../backend-microservicios/docs/Manual_de_Usuario.md)
 - [Mapa de la rúbrica](../backend-microservicios/docs/Mapa_Rubrica.md)
-- [OpenAPI por servicio](../backend-microservicios/docs/openapi/)
-- [Despliegue en AWS Academy](../backend-microservicios/aws/README_AWS.md)

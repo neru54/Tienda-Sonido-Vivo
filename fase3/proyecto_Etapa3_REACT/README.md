@@ -49,14 +49,3 @@ La interfaz solo oculta: quien autoriza es el backend (responde 401/403).
 Cuentas de demostración: `maria.perez@gmail.com` / `admin123` (administradora), `carlos.munoz@duoc.cl` / `vend123` (vendedor) y `camila.rojas@gmail.com` / `cli123` (cliente).
 
 Documentación del proyecto (ERS v3, manual de usuario, APIs e integración, `openapi.json`): carpeta `fase3/docs/`.
-
-## Despliegue en AWS S3 (sitio web estático)
-
-El frontend sigue siendo un sitio estático (solo se sube `dist/`), pero ahora necesita la URL pública de la API **al compilar**:
-
-```powershell
-$env:VITE_API_URL = "https://<dominio-de-la-api>/api/v1"
-powershell -ExecutionPolicy Bypass -File aws/deploy-s3.ps1 -Bucket nombre-unico-del-bucket
-```
-
-En el backend hay que agregar la URL del sitio a `CORS_ORIGINS`. El resto del procedimiento (bucket, política pública `aws/bucket-policy.json`, documento de error `index.html`) es igual al de la Etapa 2. El endpoint de sitio web de S3 es solo HTTP; si la API está en HTTPS conviene servir el sitio con CloudFront para evitar contenido mixto.
