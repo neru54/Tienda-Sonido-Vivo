@@ -1,8 +1,8 @@
 # Sonido Vivo — Etapa 3 (React + API REST)
 
 Vite + React (JavaScript) + react-router-dom + Bootstrap 5 + **axios**. Pruebas con Vitest y Testing Library.
-Desde esta etapa los datos ya no viven en el navegador: la tienda consume la API Spring Boot `sonido-vivo-api`
-(repositorio separado; en este repositorio está en `fase3/sonido-vivo-api`, ignorado por git).
+Desde esta etapa los datos ya no viven en el navegador: la tienda consume el backend de microservicios Spring Boot
+a través de su API Gateway (`fase3/backend-microservicios`, repositorio Git propio).
 
 ```bash
 npm install
@@ -13,11 +13,12 @@ npm run test:integracion  # pruebas contra el backend REAL (debe estar levantado
 npm run build             # build de producción
 ```
 
-Antes de `npm run dev`, levanta la API (ver su README). Sin base de datos instalada:
+Antes de `npm run dev`, levanta el backend (ver su README). Sin base de datos instalada:
 
-```bash
-cd ../sonido-vivo-api
-./mvnw spring-boot:run -Dspring-boot.run.profiles=h2
+```powershell
+cd ..\backend-microservicios
+.\mvnw.cmd -DskipTests package
+powershell -ExecutionPolicy Bypass -File scripts\iniciar-h2.ps1   # Gateway en http://localhost:8080
 ```
 
 La URL de la API se configura con `VITE_API_URL` (copiar `.env.example` como `.env`). Por defecto: `http://localhost:8080/api/v1`.
@@ -48,4 +49,4 @@ La interfaz solo oculta: quien autoriza es el backend (responde 401/403).
 
 Cuentas de demostración: `maria.perez@gmail.com` / `admin123` (administradora), `carlos.munoz@duoc.cl` / `vend123` (vendedor) y `camila.rojas@gmail.com` / `cli123` (cliente).
 
-Documentación del proyecto (ERS v3, manual de usuario, APIs e integración, `openapi.json`): carpeta `fase3/docs/`.
+Documentación del proyecto (ERS v3.1, manual de usuario, APIs e integración, OpenAPI): carpeta `docs/Fase3/` en la raíz del repositorio.

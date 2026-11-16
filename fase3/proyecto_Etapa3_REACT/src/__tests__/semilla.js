@@ -1,6 +1,6 @@
 /*
-  Datos de PRUEBA: los mismos de la base inicial del backend (src/main/resources/semilla del
-  proyecto sonido-vivo-api). Solo los usa el servidor falso de las pruebas (servidorFalso.js).
+  Datos de PRUEBA: los mismos de la base inicial del backend (semillas de los microservicios
+  usuarios y catalogo en backend-microservicios). Solo los usa el servidor falso de las pruebas (servidorFalso.js).
 */
 export const CATEGORIAS = [
   {

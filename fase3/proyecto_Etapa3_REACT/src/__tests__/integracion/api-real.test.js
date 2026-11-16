@@ -9,8 +9,8 @@ import { usuariosApi } from '../../api/usuarios'
 
 /*
   PRUEBA DE INTEGRACIÓN REAL: usa los servicios del frontend contra el backend Spring Boot levantado.
-  No corre con `npm test`; se ejecuta con `npm run test:integracion` teniendo la API arriba:
-      cd ../sonido-vivo-api && ./mvnw spring-boot:run -Dspring-boot.run.profiles=h2
+  No corre con `npm test`; se ejecuta con `npm run test:integracion` teniendo el Gateway arriba:
+      cd ../backend-microservicios && powershell -File scripts/iniciar-h2.ps1
   Modifica datos (crea una categoría, un producto y boletas): usar una base de prueba (perfil h2).
 */
 
